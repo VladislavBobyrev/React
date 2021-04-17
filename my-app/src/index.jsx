@@ -31,7 +31,7 @@ const Btn = () => {
         width: '300px',
         height: '300px',
         background: 'black',
-        color: 'white',
+         color: 'white',
     }
     //const text = 'Sign  up'
     const res = () => {
