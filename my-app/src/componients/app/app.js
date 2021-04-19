@@ -3,6 +3,9 @@ import AppHeader from '../app-header/'
 import SearchPanel from '../search-panel'
 import PostStatysFilter from '../post-statys-filter'
 import Postlist from '../post-list'
+import PostAddForm from  '../post-add-from'
+
+import './app.css'
 
 const App = () => {
 	return (
@@ -13,6 +16,7 @@ const App = () => {
 				<PostStatysFilter/>
 			</div>
 			<Postlist/>
+			<PostAddForm/>
 		</div>
 	)
 }
