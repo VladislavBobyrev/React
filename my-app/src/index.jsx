@@ -3,22 +3,28 @@ import ReactDOM from 'react-dom'
 import './index.css'
 //import App from './componients/app/'
 
-class WhoAmI extends Component {
-	constructor(props){
+class WhoAmI extends Component { // props onli  for reading, no chenge
+	constructor(props) {
 		super(props)
+		this.state = {
+			years: 25
+		}
 	}
-	render(){
+	nextYear() {
+		console.log(1)
+		//this.state.years++  do not mutate state directory
+	}
+	render() {
 		const { name, link } = this.props
+		const { years } = this.state
 		return (
 			<>
-				<h1> My name is {name}</h1>
+			<button onClick={this.nextYear}>++</button>
+				<h1> My name is {name}, years - {years} </h1>
 				<a href={link}>My Profile</a>
 			</>
 		)
 	}
 }
 
-const WhoAmI = ({ name, link }) => {
-
-}
 ReactDOM.render(<WhoAmI name='Vladislav' link='https://github.com/VladislavBobyrev' />, document.getElementById('root'))
