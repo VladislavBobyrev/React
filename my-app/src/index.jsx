@@ -10,27 +10,34 @@ class WhoAmI extends Component { // props onli  for reading, no chenge
 			years: 25,
 			natianaly: uk
 		}
-		this.nextYear = this.nextYear.bind(this)
+		//	this.nextYear = this.nextYear.bind(this)
+		//}
+		//nextYear() {
+		//	console.log(1)
+		//	//this.state.years++  do not mutate state directory
+		//	this.setState({ state => ({
+		//		years: ++state.years
+		//		})
+		//	})
 	}
-	nextYear() {
-		console.log(1)
-		//this.state.years++  do not mutate state directory
-		this.setState({ state => ({
+
+	nextYear = () => {
+		this.setState(state => ({
 			years: ++state.years
-			})
-		})
-}
-render() {
-	const { name, link } = this.props
-	const { years } = this.state
-	return (
-		<>
-			<button onClick={this.nextYear}>++</button>
-			<h1> My name is {name}, years - {years} </h1>
-			<a href={link}>My Profile</a>
-		</>
-	)
-}
+		}))
+	}
+
+	render() {
+		const { name, link } = this.props
+		const { years } = this.state
+		return (
+			<>
+				<button onClick={this.nextYear}>++</button>
+				<h1> My name is {name}, years - {years} </h1>
+				<a href={link}>My Profile</a>
+			</>
+		)
+	}
 }
 
 ReactDOM.render(<WhoAmI name='Vladislav' link='https://github.com/VladislavBobyrev' />, document.getElementById('root'))
