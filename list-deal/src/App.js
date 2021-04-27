@@ -1,7 +1,7 @@
 
 import React from 'react'
 import Task from './componients/Task'
-
+import WriteTask from './componients/WriteTasc/WriteTasc'
 class App extends React.Component {
 	constructor() {
 		super()
@@ -20,6 +20,7 @@ class App extends React.Component {
 		return (
 			<div className='App'>
 				<h1 className='top'>Activ tasks: {tasks.length}</h1>
+				WriteTask
 				{tasks.map(task => (
 					<Task task={task} key={task.id}></Task>
 				))}
