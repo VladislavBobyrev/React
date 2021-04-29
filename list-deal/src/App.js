@@ -20,7 +20,8 @@ class App extends React.Component {
 		return (
 			<div className='App'>
 				<h1 className='top'>Activ tasks: {tasks.length}</h1>
-				WriteTask
+				<WriteTask className='writeTask' />
+				<button>NEW TASK</button>
 				{tasks.map(task => (
 					<Task task={task} key={task.id}></Task>
 				))}

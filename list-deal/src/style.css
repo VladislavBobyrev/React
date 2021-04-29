@@ -38,3 +38,7 @@ body {
   position: relative;
   top: -30px;
 }
+
+.writeTask {
+  background: #fff;
+}
