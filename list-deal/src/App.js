@@ -9,9 +9,9 @@ class App extends React.Component {
 
 		this.state = {
 			tasks: [
-				{ id: 0, title: 'Create todo-react app', done: false },
-				{ id: 1, title: 'Make video about it', done: true },
-				{ id: 2, title: 'Create simple project JS', done: false }
+				{ title: 'Create todo-react app', done: false },
+				{ title: 'Make video about it', done: true },
+				{ title: 'Create simple project JS', done: false }
 			]
 		}
 	}
