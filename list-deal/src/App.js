@@ -14,6 +14,7 @@ class App extends React.Component {
 			]
 		}
 	}
+
 	render() {
 		const { tasks } = this.state
 
@@ -28,6 +29,5 @@ class App extends React.Component {
 		)
 	}
 }
-
 
 export default App

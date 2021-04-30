@@ -1,21 +1,22 @@
 import React from 'react'
 
-const activated = () => {
+export const Activated = () => {
+
+	const textTask = document.querySelector('.clickInput').value
+
 	return (
-		console.dir('press button')
+		console.dir(textTask)
 	)
 }
 
-const WriteTask = () => {
+export const WriteTask = () => {
 	return (
 		<div >
 			<form>
-				<input type='text'></input>
-				<button onClick='activated()'>NEW TASK</button>
+				<input type='text' className='clickInput'></input>
+				<button onClick={activated} >NEW TASK</button>
 			</form>
 		</div>
 	)
 }
 
-
-export default WriteTask
