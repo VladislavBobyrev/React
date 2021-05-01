@@ -1,7 +1,6 @@
-
 import React from 'react'
 import Task from './componients/Task'
-import WriteTask from './componients/WriteTasc/WriteTasc'
+
 
 class App extends React.Component {
 	constructor() {
@@ -22,7 +21,14 @@ class App extends React.Component {
 		return (
 			<div className='App'>
 				<h1 className='top'>Activ tasks: {tasks.length}</h1>
-				<WriteTask />
+				<form>
+					<input type='text' className='clickInput'></input>
+					<button onClick={() => {
+						return(
+							console.dir('hello')
+						)
+					}} >NEW TASK</button>
+				</form>
 				{tasks.map(task => (
 					<Task task={task} key={task.id}></Task>
 				))}
