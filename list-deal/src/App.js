@@ -1,3 +1,4 @@
+
 import React from 'react'
 import Task from './componients/Task'
 
@@ -23,9 +24,10 @@ class App extends React.Component {
 				<h1 className='top'>Activ tasks: {tasks.length}</h1>
 				<form>
 					<input type='text' className='clickInput'></input>
-					<button onClick={() => {
+					<button  onClick={() => {
+						let val = document.querySelector('.clickInput').value
 						return(
-							console.dir('hello')
+							tasks.unshift(val)
 						)
 					}} >NEW TASK</button>
 				</form>
