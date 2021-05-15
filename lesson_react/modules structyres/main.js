@@ -1,12 +1,4 @@
-class Slider {
-	constructor(width, height) {
-		this.width = width
-		this.height =height
-	}
-	render() {
-		console.log(`width: ${this.width}. height: ${this.height}`)
-	}
-}
+//import Slider from './module'
 
-const sliders = new Slider(400, 600)
-console.log(sliders)
+//const e = new Slider(399, 445)
+//console.log(e)
