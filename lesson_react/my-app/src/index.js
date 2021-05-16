@@ -4,10 +4,12 @@ import './index.css';
 
 const Btn = () => {
 	const text = 'Log in'
+	const loggid = true
+
 	const res = () => {
 		return 'Log in, please'
 	}
-	return <button>{res()}</button>
+	return <button>{loggid ? 'null' : text}</button>
 }
 
 const header = (
@@ -22,7 +24,8 @@ const Header = () => {
 	return <h1>hello</h1>
 }
 const Inpu = () => {
-	return <input />
+	const holder = 'Enter here'
+	return <input type='text' placeholder={holder}/>
 }
 const App = () => {
 	return (
