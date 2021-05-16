@@ -25,14 +25,23 @@ const Header = () => {
 }
 const Inpu = () => {
 	const holder = 'Enter here'
-	return <input type='text' placeholder={holder}/>
+	const styleField = {
+		width: '1000px',
+		border: '1px solid blue',
+		background: 'red',
+	}
+	return <input
+		type='text'
+		placeholder={holder} 
+		style={styleField}
+		/>
 }
 const App = () => {
 	return (
 		<div>
 			<Header />
-			<Inpu/>
-			<Btn/>
+			<Inpu />
+			<Btn />
 		</div>
 	)
 }
