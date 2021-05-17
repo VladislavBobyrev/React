@@ -1,8 +1,9 @@
 import React from 'react'
+import AppHeader from '../app-header/app-header'
 
 const App = () => {
 	return(
-		<h1>hello</h1>
+		<AppHeader/>
 	)
 }
 export default App
