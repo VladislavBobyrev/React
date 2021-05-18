@@ -1,9 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/app/app'
-import 'index.css'
+import '../src/index.css'
 
+//import App from './components/app/app'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+function WhoImI (props) {
+	//<React.Fragment> = <>
+	return (		
+		<>
+ 			<h1>My name is {props.name}, surename  is {props.surename}</h1>
+			<a href={props.link}>My profil</a>
+		</>
+	)
+}
+
+ReactDOM.render(<WhoImI name='Vladislav' surename='Bobyrev' link='google.com'/>, document.getElementById('root'));
 
 
