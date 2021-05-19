@@ -3,7 +3,7 @@ import PostListItem from '../post-list-item/post-list-item'
 import { ListGroup} from 'reactstrap';
 import '../post-list/post-list.css'
 
-const PostList = ({ posts }) => {
+const PostList = ({ posts, onDelete }) => {
 	const elem = posts.map(item => {
 
 		const { id, ...itemProps } = item
@@ -14,9 +14,9 @@ const PostList = ({ posts }) => {
 					//лэйбл и импортант мы можем не прописывать через айтем  а можем променить спред оператор
 					// тк он разворачивает обьект и записывает его как ключ значение а у нас и сервера ключ значение
 				}
-				<PostListItem {...itemProps} onDelit={() => {
-					console.log('delited')
-				}} />
+				<PostListItem 
+				{...itemProps}
+				 onDelit={() => onDelete(id)} />
 			</li>
 		)
 	})
