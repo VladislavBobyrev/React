@@ -21,8 +21,9 @@ display: flex;
 `
 
 const AppHeader = () => {
+	//<Header colored>  this is css in js style-componient fraemwork css
 	return (
-		<Header colored>
+		<Header colored> 
 			<h1>Vladislav Bobyrev</h1>
 			<h2>5 записей из низ понравилось 0</h2>
 		</Header>
