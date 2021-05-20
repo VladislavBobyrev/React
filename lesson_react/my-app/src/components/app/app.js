@@ -17,7 +17,10 @@ export default class App extends Component {
 				{ label: 'going to learn react', important: false, like: false, id: 1 },
 				{ label: 'learn English', important: false, like: false, id: 2 },
 				{ label: 'Going to run 3km', important: true, like: false, id: 3 },
-			]
+			],
+
+			term: ''
+
 		}
 		// биндим для того чтобы привязать контекст вызова 
 		this.deliteItem = this.deliteItem.bind(this)
@@ -86,11 +89,23 @@ export default class App extends Component {
 		})
 	}
 
+	SearchPost(items, term) {
+		if (term.length === 0) {
+			return items
+		}
+
+		return items.filter((item) => {
+			return item.label.indexOf(term) > -1
+		})
+	}
+
 	// метод
 	render() {
-		const { data } = this.state
+		const { data, term } = this.state
 		const liked = data.filter(item => item.like).length
 		const allPosts = data.length
+
+		const visiblePosts = this.SearchPost(data, term)
 
 		return (
 			<div className='app'>
@@ -99,7 +114,8 @@ export default class App extends Component {
 					allPosts={allPosts}
 				/>
 				<div className='search-panel d-flex'>
-					<SearchPanel />
+					<SearchPanel 
+					onUpdateSerch/>
 					<PostStatusFilter />
 				</div>
 				<PostList
