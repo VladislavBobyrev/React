@@ -14,9 +14,9 @@ export default class App extends Component {
 		// стэйт  на ПРЯМУЮ СТЭЙТ ИЗМЕНЯТЬ НЕЛЬЗЯ
 		this.state = {
 			data: [
-				{ label: 'going to learn react', important: false, id: 1 },
-				{ label: 'learn English', important: false, id: 2 },
-				{ label: 'Going to run 3km', important: true, id: 3 },
+				{ label: 'going to learn react', important: false, like: false, id: 1 },
+				{ label: 'learn English', important: false, like: false, id: 2 },
+				{ label: 'Going to run 3km', important: true, like: false, id: 3 },
 			]
 		}
 		// биндим для того чтобы привязать контекст вызова 
@@ -59,18 +59,45 @@ export default class App extends Component {
 
 	// функция
 	onToggleImportant(id) {
-		console.log(`important: ${id}`)
+		this.setState(({ data }) => {
+			const index = data.findIndex(elem => elem.id === id)
+
+			const old = data[index]
+			const newItem = { ...old, important: !old.important }
+			const newArr = [...data.slice(0, index), newItem, ...data.slice(index + 1)]
+
+			return {
+				data: newArr
+			}
+		})
 	}
 
 	onToggleLiked(id) {
-		console.log(`liked: ${id}`)
+		this.setState(({ data }) => {
+			const index = data.findIndex(elem => elem.id === id)
+
+			const old = data[index]
+			const newItem = { ...old, like: !old.like }
+			const newArr = [...data.slice(0, index), newItem, ...data.slice(index + 1)]
+
+			return {
+				data: newArr
+			}
+		})
 	}
 
 	// метод
 	render() {
+		const { data } = this.state
+		const liked = data.filter(item => item.like).length
+		const allPosts = data.length
+
 		return (
 			<div className='app'>
-				<AppHeader />
+				<AppHeader
+					liked={liked}
+					allPosts={allPosts}
+				/>
 				<div className='search-panel d-flex'>
 					<SearchPanel />
 					<PostStatusFilter />

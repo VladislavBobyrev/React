@@ -20,12 +20,12 @@ display: flex;
 	}
 `
 
-const AppHeader = () => {
+const AppHeader = ({liked, allPosts}) => {
 	//<Header colored>  this is css in js style-componient fraemwork css
 	return (
 		<Header colored> 
 			<h1>Vladislav Bobyrev</h1>
-			<h2>5 записей из низ понравилось 0</h2>
+			<h2>{allPosts} записей из низ понравилось {liked}</h2>
 		</Header>
 	)
 }

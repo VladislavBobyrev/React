@@ -1,9 +1,10 @@
 import React from 'react'
 import PostListItem from '../post-list-item/post-list-item'
-import { ListGroup} from 'reactstrap';
+import { ListGroup } from 'reactstrap';
 import '../post-list/post-list.css'
 
 const PostList = ({ posts, onDelete, onToggleImportant, onToggleLiked }) => {
+
 	const elem = posts.map(item => {
 
 		const { id, ...itemProps } = item
@@ -14,12 +15,12 @@ const PostList = ({ posts, onDelete, onToggleImportant, onToggleLiked }) => {
 					//лэйбл и импортант мы можем не прописывать через айтем  а можем променить спред оператор
 					// тк он разворачивает обьект и записывает его как ключ значение а у нас и сервера ключ значение
 				}
-				<PostListItem 
-				{...itemProps}
-				 onDelit={() => onDelete(id)} 
-				 onToggleImportant={() => onToggleImportant(id)}
-				onToggleLiked={() =>onToggleLiked(id)}
-				 />
+				<PostListItem
+					{...itemProps}
+					onDelete={() => onDelete(id)}
+					onToggleImportant={() => onToggleImportant(id)}
+					onToggleLiked={() => onToggleLiked(id)}
+				/>
 			</li>
 		)
 	})
