@@ -14,12 +14,18 @@ export default class App extends Component {
 		// стэйт  на ПРЯМУЮ СТЭЙТ ИЗМЕНЯТЬ НЕЛЬЗЯ
 		this.state = {
 			data: [
-				{ label: 'going to learn react', important: false, id: 'lsjdf' },
-				{ label: 'learn English', important: false, id: 'kljsdlfj' },
-				{ label: 'Going to run 3km', important: true, id: 'bxcvm' },
+				{ label: 'going to learn react', important: false, id: 1 },
+				{ label: 'learn English', important: false, id: 2 },
+				{ label: 'Going to run 3km', important: true, id: 3 },
 			]
 		}
+		// биндим для того чтобы привязать контекст вызова 
 		this.deliteItem = this.deliteItem.bind(this)
+		this.addItem = this.addItem.bind(this)
+		this.onToggleImportant = this.onToggleImportant.bind(this)
+		this.onToggleLiked = this.onToggleLiked.bind(this)
+
+		this.maxId = 4
 	}
 	// метод
 	deliteItem(id) {
@@ -35,6 +41,31 @@ export default class App extends Component {
 			}
 		})
 	}
+
+	// метод
+	addItem(body) {
+		const newItem = {
+			label: body,
+			important: false,
+			id: this.maxId++,
+		}
+		this.setState(({ data }) => {
+			const newArr = [...data, newItem]
+			return {
+				data: newArr
+			}
+		})
+	}
+
+	// функция
+	onToggleImportant(id) {
+		console.log(`important: ${id}`)
+	}
+
+	onToggleLiked(id) {
+		console.log(`liked: ${id}`)
+	}
+
 	// метод
 	render() {
 		return (
@@ -47,8 +78,11 @@ export default class App extends Component {
 				<PostList
 					posts={this.state.data}
 					onDelete={this.deliteItem}
+					onToggleImportant={this.onToggleImportant}
+					onToggleLiked={this.onToggleLiked}
 				/>
-				<PostAddForm />
+				<PostAddForm
+					onAdd={this.addItem} />
 			</div>
 		)
 	}
