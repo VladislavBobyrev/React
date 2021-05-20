@@ -14,19 +14,22 @@ export default class App extends Component {
 		// стэйт  на ПРЯМУЮ СТЭЙТ ИЗМЕНЯТЬ НЕЛЬЗЯ
 		this.state = {
 			data: [
-				{ label: 'going to learn react', important: false, like: false, id: 1 },
+				{ label: 'going to learn react', important: false, like: true, id: 1 },
 				{ label: 'learn English', important: false, like: false, id: 2 },
 				{ label: 'Going to run 3km', important: true, like: false, id: 3 },
 			],
 
-			term: ''
+			term: '',
 
+			filter: 'all',
 		}
 		// биндим для того чтобы привязать контекст вызова 
 		this.deliteItem = this.deliteItem.bind(this)
 		this.addItem = this.addItem.bind(this)
 		this.onToggleImportant = this.onToggleImportant.bind(this)
 		this.onToggleLiked = this.onToggleLiked.bind(this)
+		this.onUpdateSerch = this.onUpdateSerch.bind(this)
+		this.onFilterSelect = this.onFilterSelect.bind(this)
 
 		this.maxId = 4
 	}
@@ -99,13 +102,28 @@ export default class App extends Component {
 		})
 	}
 
+	filterPosts(items, filter) {
+		if(filter === 'like') {
+			return items.filter(item => item.like)
+		} else {
+			return items
+		}
+	}
+
+	onUpdateSerch(term) {
+		return this.setState({term})
+	}
+
+	onFilterSelect(filter) {
+			this.setState({filter})
+	}
 	// метод
 	render() {
-		const { data, term } = this.state
+		const { data, term, filter } = this.state
 		const liked = data.filter(item => item.like).length
 		const allPosts = data.length
 
-		const visiblePosts = this.SearchPost(data, term)
+		const visiblePosts = this.filterPosts(this.SearchPost(data, term), filter)
 
 		return (
 			<div className='app'>
@@ -115,11 +133,14 @@ export default class App extends Component {
 				/>
 				<div className='search-panel d-flex'>
 					<SearchPanel 
-					onUpdateSerch/>
-					<PostStatusFilter />
+					onUpdateSerch={this.onUpdateSerch}/>
+					<PostStatusFilter 
+					filter={filter}
+					onFilterSelect={this.onFilterSelect}
+					/>
 				</div>
 				<PostList
-					posts={this.state.data}
+					posts={visiblePosts}
 					onDelete={this.deliteItem}
 					onToggleImportant={this.onToggleImportant}
 					onToggleLiked={this.onToggleLiked}

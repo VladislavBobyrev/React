@@ -6,7 +6,7 @@ import styled from 'styled-components'
 const Header = styled.div`
 display: flex;
 	align-items: flex-end;
-	justify-content: space-beetwen; 
+	justify-content:space-between; 
 	h1{
 		font-size: 26px;
 		color: ${props => props.colored ? 'red' : 'black'};
@@ -15,6 +15,7 @@ display: flex;
 		}
 	}
 	h2{
+		text-align: right;
 		font-size: 1.2rem;
 		color: grey;
 	}
